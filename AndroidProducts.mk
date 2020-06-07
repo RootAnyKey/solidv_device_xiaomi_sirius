@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/aosp_sirius.mk
+	$(LOCAL_DIR)/derp_sirius.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_sirius-user \
-    aosp_sirius-userdebug \
-    aosp_sirius-eng
+    derp_sirius-user \
+    derp_sirius-userdebug \
+    derp_sirius-eng

@@ -6,7 +6,9 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+ifeq ($(DERP_BUILD_ZIP_TYPE), GAPPS)
+    $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+endif
 
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/xiaomi/sirius/sirius-vendor.mk)
@@ -18,9 +20,26 @@ $(call inherit-product, vendor/xiaomi/firmware/sirius/firmware.mk)
 TARGET_SCREEN_HEIGHT := 2244
 TARGET_SCREEN_WIDTH := 1080
 
+#PixelSounds
+ifeq ($(DERP_BUILD_ZIP_TYPE), VANILLA)
+PRODUCT_PACKAGES += \
+    PixelSounds
+endif
+
+#CameraGO
+ifeq ($(DERP_BUILD_ZIP_TYPE), VANILLA)
+PRODUCT_PACKAGES += \
+    CameraGO
+endif
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
+
+ifeq ($(DERP_BUILD_ZIP_TYPE), VANILLA)
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-nogapps
+endif
 
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
