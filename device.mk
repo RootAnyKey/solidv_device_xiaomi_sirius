@@ -20,16 +20,10 @@ $(call inherit-product, vendor/xiaomi/firmware/sirius/firmware.mk)
 TARGET_SCREEN_HEIGHT := 2244
 TARGET_SCREEN_WIDTH := 1080
 
-#PixelSounds
-ifeq ($(DERP_BUILD_ZIP_TYPE), VANILLA)
-PRODUCT_PACKAGES += \
-    PixelSounds
-endif
-
 #CameraGO
-ifeq ($(DERP_BUILD_ZIP_TYPE), VANILLA)
+ifeq ($(DERP_BUILD_ZIP_TYPE), GAPPS)
 PRODUCT_PACKAGES += \
-    CameraGO
+    CameraGo
 endif
 
 # Overlays
